@@ -10,16 +10,19 @@ public class Card
     // Instance variables
     char chrColour, chrType;
     
-    // Constant characters
+    // Constant values for card colours
     final char CHR_RED = 'r';
     final char CHR_BLUE = 'b';
     final char CHR_YELLOW = 'y';
     final char CHR_GREEN = 'g';
-    final char CHR_SWITCH = 's';
-    final char CHR_REVERSE = 'r';
-    final char CHR_SKIP = 'x';
-    final char CHR_PICK_TWO = 'y';
-    final char CHR_PICK_FOUR = 'z';
+    final char CHR_COLOURLESS = 'z';
+    
+    // Constant values for card types
+    final char CHR_PICK_TWO = 'a';
+    final char CHR_SKIP = 'b';
+    final char CHR_REVERSE = 'c';
+    final char CHR_SWITCH = 'd';
+    final char CHR_PICK_FOUR = 'e';
     
     
     // Constructor, taking the card colour and type(numerial/special)
@@ -45,7 +48,11 @@ public class Card
     
     @Override
     public String toString() {
+        
+        // Value for colour of card to return
         String strColour;
+        
+        // Value for type of card to return
         String strType;
         switch(chrColour){
             case CHR_RED:
@@ -59,6 +66,9 @@ public class Card
                 break;
             case CHR_YELLOW:
                 strColour = "Yellow";
+                break;
+            case CHR_COLOURLESS:
+                strColour = "Colourless";
                 break;
             default:
                 strColour = "INVALID CARD COLOUR";
@@ -82,7 +92,7 @@ public class Card
                 strType = "Pick up 4";
                 break;
             default:
-                strType = "INVALID CARD TYPE";
+                strType = Character.toString(chrType);
                 break;
         }
         

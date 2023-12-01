@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=Card
-comment0.text=\n\ Write\ a\ description\ of\ class\ Card\ here.\n\n\ @author\ (Ibraheem\ Dawod)\n\ @version\ (2023-11-30)\n
-comment1.params=chrColour\ chrType
-comment1.target=Card(char,\ char)
-comment2.params=
-comment2.target=java.lang.String\ toString()
-numComments=3

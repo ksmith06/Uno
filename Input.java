@@ -65,7 +65,7 @@ public class Input
         byte bytMin = 0;
         
         //call for getInput with prompt, max, and min parameters
-        getInput(strPrompt, bytMax, bytMin);
+        return getInput(strPrompt, bytMax, bytMin);
     }
     
     public static byte getInput(ArrayList<Card> arlHand)
@@ -92,7 +92,7 @@ public class Input
         }
         
         //call for getInput with prompt, max, and min parameters
-        getInput(strChoices, bytMax, bytMin);
+        return getInput(strChoices, bytMax, bytMin);
     }
     
     //create void method to replace system.out

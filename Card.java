@@ -1,6 +1,10 @@
 
 /**
- * Write a description of class Card here.
+ * The Card class will contain a Card Objects colour and type. 
+ * This type can either be one of the five special cards, or a numerical card(0-9).
+ * This class contains a contructor, and two methods. 
+ * The first method sets the face card of the deck whenever a card is played onto it to the current card's colour and type.
+ * The second is a toString which converts the character instance variables for colour and type into a String.
  *
  * @author (Ibraheem Dawod)
  * @version (2023-11-30)
@@ -54,6 +58,9 @@ public class Card
         
         // Value for type of card to return
         String strType;
+        
+        // Switch case statement to outpout the colour of the card based on the variable "chrColour"
+        // Colourless represents cards that allow you to choose the colour
         switch(chrColour){
             case CHR_RED:
                 strColour = "Red";
@@ -75,6 +82,7 @@ public class Card
                 break;
         }
         
+        // Switch case statement to outpout the type/number of the card based on the variable "chrType"
         switch(chrType){
             case CHR_SWITCH:
                 strType = "Switch colour";
@@ -92,6 +100,7 @@ public class Card
                 strType = "Pick up 4";
                 break;
             default:
+                // If the "chrType" is not a special character(if its a number, set "strType" to the chrType
                 strType = Character.toString(chrType);
                 break;
         }

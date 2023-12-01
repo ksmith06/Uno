@@ -12,7 +12,7 @@
 public class Card
 {
     // Instance variables
-    char chrColour, chrType;
+    private char chrColour, chrType;
     
     // Constant values for card colours
     final char CHR_RED = 'r';
@@ -49,6 +49,15 @@ public class Card
         // // Set the type of the face card to the current card type
         // Deck.chrCurrentType = chrType;
     // }
+    
+    // Getters for Card instance variables
+    public char getColour() {
+        return chrColour;
+    }
+    
+    public char getType() {
+        return chrType;
+    }
     
     @Override
     public String toString() {

@@ -108,8 +108,6 @@ public class Deck
         {
             System.out.println("Error: Cannot read from file");
         }	
-<<<<<<< Updated upstream
-=======
         
         System.out.println(arlDeck.get(0));
         System.out.println(arlDeck.get(1));
@@ -117,16 +115,5 @@ public class Deck
         System.out.println(arlDeck.get(3));
         System.out.println(arlDeck.get(4));
         System.out.println(arlDeck.get(5));
->>>>>>> Stashed changes
     }
-    
-    
-
-
-
-    
-    
-    
-
-
 }

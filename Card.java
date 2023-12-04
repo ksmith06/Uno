@@ -9,6 +9,7 @@
  * @author (Ibraheem Dawod)
  * @version (2023-11-30)
  */
+
 public class Card
 {
     // Instance variables
@@ -39,17 +40,6 @@ public class Card
         this.chrType = chrType;
     }
     
-    // Sets the face card of the Deck
-    // Will be called by the Player class when playing a card
-    // public void setFaceCard() {
-        
-        // // Set the colour of the face card of the deck to the current Card
-        // Deck.chrCurrentColour = chrColour;
-        
-        // // Set the type of the face card to the current card type
-        // Deck.chrCurrentType = chrType;
-    // }
-    
     // Getters for Card instance variables
     public char getColour() {
         return chrColour;
@@ -57,6 +47,10 @@ public class Card
     
     public char getType() {
         return chrType;
+    }
+    
+    public void setColour(char c) {
+        chrColour = c;
     }
     
     @Override
@@ -109,6 +103,7 @@ public class Card
                 strType = "Pick up 4";
                 break;
             default:
+                
                 // If the "chrType" is not a special character(if its a number, set "strType" to the chrType
                 strType = Character.toString(chrType);
                 break;

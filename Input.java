@@ -95,6 +95,8 @@ public class Input
         return getInput(strChoices, bytMax, bytMin);
     }
     
+    //create a void method that changes the current
+    
     //create void method to replace system.out
     public static void prnt(String strText)
     {

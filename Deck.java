@@ -35,10 +35,11 @@ public class Deck
         //declare and populate variable of type int with a number from 0-arlDeck size, minus 1
         int intRandNum = rand.nextInt(arlDeck.size() - 1);
         
+        //remove the card
         arlDeck.remove(intRandNum);
         
+        //return the card
         return arlDeck.get(intRandNum);
-        
     }
     
     //create void method to add a card to the discard pile

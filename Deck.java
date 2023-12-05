@@ -32,12 +32,14 @@ public class Deck
         //declare and populate variable of type int with a number from 0-arlDeck size, minus 1
         int intRandNum = rand.nextInt(arlDeck.size() - 1);
         
+        arlDeck.remove(intRandNum);
+        
         return arlDeck.get(intRandNum);
         
     }
     
     //create void method to add a card to the discard pile
-    public void AddToDiscardPile(Card playedCard)
+    public static void addToDiscardPile(Card playedCard)
     {
         //add played card to discard pile arraylist
         arlDiscardPile.add(playedCard);
@@ -98,16 +100,16 @@ public class Deck
             in.close();
         }
         catch (FileNotFoundException e) {
-            System.out.println("Error: Cannot open file for 	reading");
+            System.out.println("Error: Cannot open file for     reading");
         } 
         catch (EOFException e) 
         {
-            System.out.println("Error: EOF encountered, file 	 	may be corrupt");
+            System.out.println("Error: EOF encountered, file          may be corrupt");
         } 
         catch (IOException e) 
         {
             System.out.println("Error: Cannot read from file");
-        }	
+        }    
         
         System.out.println(arlDeck.get(0));
         System.out.println(arlDeck.get(1));

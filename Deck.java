@@ -35,12 +35,15 @@ public class Deck
         //declare and populate variable of type int with a number from 0-arlDeck size, minus 1
         int intRandNum = rand.nextInt(arlDeck.size() - 1);
         
+        arlDeck.remove(intRandNum);
+        
         return arlDeck.get(intRandNum);
         
     }
     
     //create void method to add a card to the discard pile
     public static void AddToDiscardPile(Card playedCard)
+
     {
         //add played card to discard pile arraylist
         arlDiscardPile.add(playedCard);
@@ -109,7 +112,8 @@ public class Deck
             //close the filereader
             in.close();
         }
-        catch (FileNotFoundException e) {
+        catch (FileNotFoundException e) 
+        {
             System.out.println("Error: Cannot open file for reading");
         } 
         catch (NoSuchElementException e) 
@@ -126,18 +130,8 @@ public class Deck
         {
             System.out.println(arlDeck.get(i));
         }
-        
-        System.out.println(arlDeck.size());
+
+          
 
     }
-    
-    
-
-
-
-    
-    
-    
-
-
 }

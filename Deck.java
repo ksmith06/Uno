@@ -45,15 +45,13 @@ public class Deck
         //return and remove the card
         return arlDeck.remove(intRandNum);
     }
-    
+
     /**
     * Author: Raymond Tan
     * Date: 12/04/2023
     * Decscription: This method adds a played card to the discard pile and changes the current card to that played card.
     */
-    //create void method to add a card to the discard pile
     public static void AddToDiscardPile(Card playedCard)
-
     {
         //add played card to discard pile arraylist
         arlDiscardPile.add(playedCard);

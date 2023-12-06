@@ -65,6 +65,19 @@ public class Input
         return bytInput;
     }
     
+    public static void awaitInput()
+    {
+        new Scanner(System.in).nextLine();
+    }
+    
+    public static String getStringInput(String strPrompt)
+    {
+        System.out.println(strPrompt);
+        
+        return new Scanner(System.in).nextLine();
+    }
+    
+
     /**
     * Author: Raymond Tan
     * Date: 12/01/2023

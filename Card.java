@@ -57,6 +57,11 @@ public class Card
         }
     }
     
+    public boolean isCompatible(Card c)
+    {
+        return chrColour == c.getColour() || chrType == c.getType() || chrColour == CHR_COLOURLESS;
+    }
+    
     protected String cardColour() {
         
         // Value for colour of card to return

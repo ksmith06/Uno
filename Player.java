@@ -9,12 +9,35 @@ import java.util.ArrayList;
 public class Player
 {
     ArrayList<Card> arlHand;
+    private String strName;
+    private static byte bytNumOfPlayers;
     
     private final int HAND_SIZE = 7;
     
     public Player()
     {
         arlHand = new ArrayList<Card>();
+        
+        fillHand();
+        
+        bytNumOfPlayers++;
+        
+        strName = Input.getStringInput("Hello player" + bytNumOfPlayers + "! Please enter your name:");
+    }
+    
+    public String getName()
+    {
+        return strName;
+    }
+    
+    public ArrayList<Card> getHand()
+    {
+        return arlHand;
+    }
+    
+    public boolean isHandEmpty()
+    {
+        return arlHand.size() == 0;
     }
     
     // probably unnessesary, since we're just inserting on every draw

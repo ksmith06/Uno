@@ -38,6 +38,8 @@ public class Deck
         
     }
     
+    public static Card getCurrentCard() { return currentCard; }
+    
     //create void method to add a card to the discard pile
     public static void addToDiscardPile(Card playedCard)
     {

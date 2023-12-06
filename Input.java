@@ -58,6 +58,18 @@ public class Input
         return bytInput;
     }
     
+    public static void awaitInput()
+    {
+        new Scanner(System.in).nextLine();
+    }
+    
+    public static String getStringInput(String strPrompt)
+    {
+        System.out.println(strPrompt);
+        
+        return new Scanner(System.in).nextLine();
+    }
+    
      //create non void method to return users input
     public static byte getInput(String strPrompt, byte bytMax)
     {

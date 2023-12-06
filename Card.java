@@ -53,6 +53,11 @@ public class Card
         chrColour = c;
     }
     
+    public boolean isCompatible(Card c)
+    {
+        return chrColour == c.getColour() || chrType == c.getType() || chrColour == CHR_COLOURLESS;
+    }
+    
     @Override
     public String toString() {
         

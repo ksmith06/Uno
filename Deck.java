@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class Deck here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Author: Raymond Tan
+ * Date: 12/04/2023
+ * Decscription: This class repressents the deck used in the game. It is populated by a file that contains every card in the deck. 
+ * The deck class contains the decl, discardpile AND the current card. This class allows a card to be drawn from the deck and allows a card
+ * to be placed into the discard pile, which changes the current card.
  */
 //import random class to grab a random card from the deck
 import java.util.Random;
@@ -23,9 +24,15 @@ public class Deck
     private static ArrayList<Card> arlDeck = new ArrayList<Card>();
     private static ArrayList<Card> arlDiscardPile = new ArrayList<Card>();
     
-    //declare private static variables of type card to store the current card
-    static Card currentCard;
+    //declare private static variable of type card to store the current card
+    private static Card currentCard;
     
+    /**
+    * Author: Raymond Tan
+    * Date: 12/04/2023
+    * Decscription: This method allows the users to draw a card from the deck. It grabs a random card from the deck, removes that card from the 
+    * deck, and returns it.
+    */
     //create static non void method to return a random card from the deck
     public static Card drawCard()
     {
@@ -35,13 +42,15 @@ public class Deck
         //declare and populate variable of type int with a number from 0-arlDeck size, minus 1
         int intRandNum = rand.nextInt(arlDeck.size() - 1);
         
-        //remove the card
-        arlDeck.remove(intRandNum);
-        
-        //return the card
-        return arlDeck.get(intRandNum);
+        //return and remove the card
+        return arlDeck.remove(intRandNum);
     }
     
+    /**
+    * Author: Raymond Tan
+    * Date: 12/04/2023
+    * Decscription: This method adds a played card to the discard pile and changes the current card to that played card.
+    */
     //create void method to add a card to the discard pile
     public static void AddToDiscardPile(Card playedCard)
 
@@ -53,6 +62,11 @@ public class Deck
         currentCard = playedCard;
     }
     
+    /**
+    * Author: Raymond Tan
+    * Date: 12/04/2023
+    * Decscription: This method populates the deck with a read in file that contains all the cards.
+    */
     //create void method to populate the deck from a file
     public static void populateDeck()
     {
@@ -67,8 +81,6 @@ public class Deck
         
         //declare variable of type String to store the read in line
         String strLine;
-        
-        
         
         //create try catch to catch any IO, EOF, or FIleNotFound exceptions
         try 
@@ -125,14 +137,16 @@ public class Deck
         {
             System.out.println("Error: Cannot read from file");
         }   
-
-        
-        for (int i = 0; i < arlDeck.size(); i++)
-        {
-            System.out.println(arlDeck.get(i));
-        }
-
-          
-
+    }
+    
+    /**
+    * Author: Raymond Tan
+    * Date: 12/04/2023
+    * Decscription: This method returns the current card.
+    */
+    //Create getters to get the current card
+    public Card getCurrentCard()
+    {
+        return currentCard;
     }
 }

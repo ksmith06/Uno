@@ -40,27 +40,27 @@ public class Card
         this.chrType = chrType;
     }
     
-    // Getters for Card instance variables
+    // Getters & Setter for Card instance variables
     public char getColour() {
         return chrColour;
     }
     
     public char getType() {
         return chrType;
-    }
-    
+    } 
+
     public void setColour(char c) {
-        chrColour = c;
+        
+        // Logic to ensure the colour of the card being switched is one of the cards that has a customizable colour
+        if(chrType == CHR_SWITCH || chrType == CHR_PICK_FOUR) {
+            chrColour = c;
+        }
     }
     
-    @Override
-    public String toString() {
+    protected String cardColour() {
         
         // Value for colour of card to return
         String strColour;
-        
-        // Value for type of card to return
-        String strType;
         
         // Switch case statement to outpout the colour of the card based on the variable "chrColour"
         // Colourless represents cards that allow you to choose the colour
@@ -84,6 +84,14 @@ public class Card
                 strColour = "INVALID CARD COLOUR";
                 break;
         }
+        
+        return strColour;
+    }
+    
+    protected String cardType() {
+        
+        // Value for type of card to return
+        String strType;
         
         // Switch case statement to outpout the type/number of the card based on the variable "chrType"
         switch(chrType){
@@ -109,6 +117,13 @@ public class Card
                 break;
         }
         
-        return strType + ": " + strColour;
+        return strType;
+    }
+    
+    @Override
+    public String toString() {
+        
+        // Return the card type and colour
+        return cardType() + ": " + cardColour();
     }
 }

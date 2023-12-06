@@ -145,7 +145,7 @@ public class Deck
     * Decscription: This method returns the current card.
     */
     //Create getters to get the current card
-    public Card getCurrentCard()
+    public static Card getCurrentCard()
     {
         return currentCard;
     }

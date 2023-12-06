@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class SpecialCard here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * The SpecialCard class contains a constructor and a cardEffect method.
+ * This method enacts a special ability on the deck/players depending on the type of card.
+ * 
+ * @author (Ibraheem Dawod)
+ * @version (2023-12-05)
  */
 public class SpecialCard extends Card
 {
@@ -14,72 +15,92 @@ public class SpecialCard extends Card
     final char CHR_SWITCH = 'd';
     final char CHR_PICK_FOUR = 'e';
     
+    // Constructor for SpecialCard
     public SpecialCard(char chrColour, char chrType) {
+        
+        // Calls superclass constructor, taking in variables passed in
         super(chrColour, chrType);
     }
     
-    byte bytPlayerTurn = 0;
-    // Move to GameManager
-    static public void nextTurn(){
-        if(bytPlayerTurn+1 > arlPlayers.size()-1) {
-            bytPlayerTurn = 0;
-        } else {
-            bytPlayerTurn++;
-        }
-    }
-    
+    // void method with no parameters to enact a certain special ability on the deck/players
     public void cardEffect() {
-        // ACCESS INPUT METHOD WHICH ASKS USER WHAT COLOUR THEY WANT
-        // STORE THAT COLOUR
-        switch(super.getType()){
+        
+        // Switch case statement based on the type of the current card
+        switch(getType()){
             case CHR_REVERSE:
-                // REVERSE ORDER OF PLAYERS IN ARRAY LIST OF PLAYERS
-                // GameManager.arlPlayers
-                ArrayList<Player> arlNewOrder = new ArrayList<Player>();
-                for(int i = 0; i<GameManager.arlPlayers.size(); i++) {
-                    arlNewOrder.add(GameManager.arlPlayers.get(GameManager.arlPlayers.size() - 1 - i));
-                }
-                GameManager.arlPlayers = arlNewOrder;
+                
+                // Run the reverse method in GameManager
+                GameManager.reverse();
+                
+                // Inform the players of the play switch
+                System.out.println(GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + " has reversed the order of playing! \nIt is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn + 1).strPlayerName + "'s turn.");
+                
+                // Run the nextTurn method in GameManager
                 GameManager.nextTurn();
                 break;
             case CHR_SKIP:
-                // SKIP TURN OF NEXT PLAYER
-                // Add 2 to byte keeping track of which player it is to play
-                // Skip back to beginning if you reach end of Player ArrayList
-                // if(GameManager.bytPlayerTurn+1 > GameManager.arlPlayers.size()-1) {
-                    // GameManager.bytPlayerTurn = 1;
-                // } else if(GameManger.bytPlayerTurn+2 > GameManager.arlPlayers.size()-1) {
-                    // GameManager.bytPlayerTurn = 0;
-                // }
-                for(int i = 0; i < 2; i++){
-                    GameManager.nextTurn();
-                }
+                
+                // Run the nextTurn method in GameManager
+                GameManager.nextTurn();
+                
+                // Inform the players about the card skip
+                System.out.println(GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn has been skipped!");
+                
+                // Run the nextTurn method again
+                GameManager.nextTurn();
+                
+                // Inform the players of the current players turn
+                System.out.println("It is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn.");
                 break;
             case CHR_PICK_TWO:
-                // MAKE NEXT PLAYER PICK UP 2 CARDS
+                
+                // Run the nextTurn method in GameManager, and inform the players
                 GameManager.nextTurn();
+                System.out.println("It is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn.");
+                
+                // Add two cards to the players deck
                 for(int i = 0; i < 2; i++){
-                    GameManager.arlPlayers.get(bytPlayerTurn).arlHand.add(Deck.drawCard());
+                    
+                    // Take a Card from the deck and store it
+                    Card c = Deck.drawCard();
+                    
+                    // Get the current player(whose turn it is) and add a card from the deck
+                    GameManager.arlPlayers.get(bytPlayerTurn).arlHand.add(c);
+                    
+                    // Print out the card drawn
+                    System.out.println("\t" + c.cardColour());
                 }
                 break;
-            
-        }
-    }
-    
-    public void cardEffect(char chrPlayerChoice){
-        switch(super.getType()){
             case CHR_PICK_FOUR:
-                // MAKE NEXT PLAYER PICK UP 4 CARDS
-                // CHANGE COLOUR TO CURRENT PLAYERS CHOICE
-                Deck.currentCard.setColour(chrPlayerChoice);
+                
+                // Call the getColourSwap method which returns a char from the Input class
+                setColour(Input.getColourSwap());
+                
+                // Run the nextTurn method in GameManager, and inform the players
                 GameManager.nextTurn();
+                System.out.println("It is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn. \n4 cards have been added to their deck! The cards are: ");
+                
+                // Add four cards to the players deck
                 for(int i = 0; i < 4; i++){
-                    GameManager.arlPlayers.get(bytPlayerTurn).arlHand.add(Deck.drawCard());
+                    
+                    // Take a Card from the deck and store it
+                    Card c = Deck.drawCard();
+                    
+                    // Get the current player(whose turn it is) and add a card from the deck
+                    GameManager.arlPlayers.get(bytPlayerTurn).arlHand.add(c);
+                    
+                    // Print out the card drawn
+                    System.out.println("\t" + c.cardColour());
                 }
+                
+                System.out.println("The colour is now " + Deck.getCurrentCard().cardColour());
                 break;
             case CHR_SWITCH:
-                // CHANGE COLOUR TO CURRENT PLAYERS CHOICE
-                Deck.currentCard.setColour(chrPlayerChoice);
+           
+                
+                setColour(Input.getColourSwap());
+                
+                // Run the nextTurn method in GameManager
                 GameManager.nextTurn();
                 break;
         }

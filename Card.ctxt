@@ -1,12 +1,14 @@
 #BlueJ class context
 comment0.target=Card
-comment0.text=\n\ The\ Card\ class\ will\ contain\ a\ Card\ Objects\ colour\ and\ type.\ \n\ This\ type\ can\ either\ be\ one\ of\ the\ five\ special\ cards,\ or\ a\ numerical\ card(0-9).\n\ This\ class\ contains\ a\ contructor,\ and\ two\ methods.\ \n\ The\ first\ method\ sets\ the\ face\ card\ of\ the\ deck\ whenever\ a\ card\ is\ played\ onto\ it\ to\ the\ current\ card's\ colour\ and\ type.\n\ The\ second\ is\ a\ toString\ which\ converts\ the\ character\ instance\ variables\ for\ colour\ and\ type\ into\ a\ String.\n\n\ @author\ (Ibraheem\ Dawod)\n\ @version\ (2023-11-30)\n
+comment0.text=\r\n\ The\ Card\ class\ will\ contain\ a\ Card\ Objects\ colour\ and\ type.\ \r\n\ This\ type\ can\ either\ be\ one\ of\ the\ five\ special\ cards,\ or\ a\ numerical\ card(0-9).\r\n\ This\ class\ contains\ a\ contructor,\ and\ two\ methods.\ \r\n\ The\ first\ method\ sets\ the\ face\ card\ of\ the\ deck\ whenever\ a\ card\ is\ played\ onto\ it\ to\ the\ current\ card's\ colour\ and\ type.\r\n\ The\ second\ is\ a\ toString\ which\ converts\ the\ character\ instance\ variables\ for\ colour\ and\ type\ into\ a\ String.\r\n\r\n\ @author\ (Ibraheem\ Dawod)\r\n\ @version\ (2023-11-30)\r\n
 comment1.params=chrColour\ chrType
 comment1.target=Card(char,\ char)
 comment2.params=
 comment2.target=char\ getColour()
 comment3.params=
 comment3.target=char\ getType()
-comment4.params=
-comment4.target=java.lang.String\ toString()
-numComments=5
+comment4.params=c
+comment4.target=void\ setColour(char)
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6

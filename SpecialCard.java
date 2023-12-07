@@ -34,9 +34,6 @@ public class SpecialCard extends Card
                 
                 // Inform the players of the play switch
                 System.out.println(GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + " has reversed the order of playing! \nIt is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn + 1).strPlayerName + "'s turn.");
-                
-                // Run the nextTurn method in GameManager
-                GameManager.nextTurn();
                 break;
             case CHR_SKIP:
                 
@@ -45,17 +42,9 @@ public class SpecialCard extends Card
                 
                 // Inform the players about the card skip
                 System.out.println(GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn has been skipped!");
-                
-                // Run the nextTurn method again
-                GameManager.nextTurn();
-                
-                // Inform the players of the current players turn
-                System.out.println("It is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn.");
                 break;
             case CHR_PICK_TWO:
                 
-                // Run the nextTurn method in GameManager, and inform the players
-                GameManager.nextTurn();
                 System.out.println("It is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn.");
                 
                 // Add two cards to the players deck
@@ -70,6 +59,8 @@ public class SpecialCard extends Card
                     // Print out the card drawn
                     System.out.println("\t" + c.cardColour());
                 }
+                
+                System.out.println("The colour is now: " + Deck.getCurrentCard().cardColour());
                 break;
             case CHR_PICK_FOUR:
                 
@@ -93,15 +84,14 @@ public class SpecialCard extends Card
                     System.out.println("\t" + c.cardColour());
                 }
                 
-                System.out.println("The colour is now " + Deck.getCurrentCard().cardColour());
+                System.out.println("The colour is now: " + Deck.getCurrentCard().cardColour());
                 break;
             case CHR_SWITCH:
            
                 
                 setColour(Input.getColourSwap());
                 
-                // Run the nextTurn method in GameManager
-                GameManager.nextTurn();
+                System.out.println("The colour is now: " + cardColour());
                 break;
         }
     }

@@ -51,7 +51,7 @@ public class Deck
     * Date: 12/04/2023
     * Decscription: This method adds a played card to the discard pile and changes the current card to that played card.
     */
-    public static void AddToDiscardPile(Card playedCard)
+    public static void addToDiscardPile(Card playedCard)
     {
         //add played card to discard pile arraylist
         arlDiscardPile.add(playedCard);

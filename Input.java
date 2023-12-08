@@ -102,25 +102,20 @@ public class Input
     public static byte getInput(ArrayList<Card> arlHand)
     {
         //declare variables of type byte to store the max and min of the arraylist
-        byte bytMax = (byte)(arlHand.size() - 1);
-        byte bytMin = 0;
+        byte bytMax = (byte) (arlHand.size() + 1);
+        byte bytMin = 1;
         
         //declare variable of type string to output card options
         String strChoices = "Please select a card to play: ";
         
         //create for loop through every index of the array
-        for (int i = 0; i <= bytMax + 1; i++)
+        for (int i = 0; i < bytMax - 1; i++)
         {
             //populate strChoices with every choice;
-            strChoices += "\n" + i + " - " + arlHand.get(i);
-            
-            //check if i is byMax + 1
-            if (i == bytMax + 1)
-            {
-                //populate strChoices with a Draw option
-                 strChoices += "\n" + i + " - " + "Draw";
-            }
+            strChoices += "\n" + (i + 1) + " - " + arlHand.get(i);
         }
+        
+        strChoices += "\n" + bytMax + " - " + "Draw";
         
         //call for getInput with prompt, max, and min parameters
         return getInput(strChoices, bytMax, bytMin);

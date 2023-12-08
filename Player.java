@@ -8,9 +8,10 @@ import java.util.ArrayList;
  */
 public class Player
 {
-    ArrayList<Card> arlHand;
+    private ArrayList<Card> arlHand;
     private String strName;
     private static byte bytNumOfPlayers;
+    private static final byte bytHandSize = 7;
     
     public Player()
     {
@@ -20,7 +21,30 @@ public class Player
         
         bytNumOfPlayers++;
         
-        strName = Input.getStringInput("Hello player" + bytNumOfPlayers + "! Please enter your name:");
+        strName = Input.getStringInput("Hello player " + bytNumOfPlayers + "! Please enter your name:");
+    }
+    
+    private void fillHand()
+    {
+        for (byte i = 0; i < bytHandSize; i++)
+        {
+            drawCard();
+        }
+    }
+    
+    public void playCard(byte bytIndex)
+    {
+        if (arlHand.get(bytIndex) instanceof SpecialCard)
+        {
+            ((SpecialCard) arlHand.get(bytIndex)).cardEffect();
+        }
+        
+        Deck.addToDiscardPile(arlHand.remove(bytIndex));
+    }
+    
+    public void drawCard()
+    {
+        insertCard(Deck.drawCard());
     }
     
     public String getName()
@@ -52,15 +76,17 @@ public class Player
     }
     
     public void insertCard(Card x)
-    {
+    {   
         for (int i = 0; i < arlHand.size(); i++)
         {
             if (x.getColour() < arlHand.get(i).getColour() 
                 || (x.getColour() == arlHand.get(i).getColour() && x.getType() < arlHand.get(i).getType()))
             {
                 arlHand.add(i, x);
-                break;
+                return;
             }
         }
+        
+        arlHand.add(x);
     }
 }

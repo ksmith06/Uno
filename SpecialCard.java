@@ -7,14 +7,7 @@
  * @version (2023-12-05)
  */
 public class SpecialCard extends Card
-{
-    // Constant values for card types
-    final char CHR_PICK_TWO = 'a';
-    final char CHR_SKIP = 'b';
-    final char CHR_REVERSE = 'c';
-    final char CHR_SWITCH = 'd';
-    final char CHR_PICK_FOUR = 'e';
-    
+{   
     // Constructor for SpecialCard
     public SpecialCard(char chrColour, char chrType) {
         
@@ -33,7 +26,7 @@ public class SpecialCard extends Card
                 GameManager.reverse();
                 
                 // Inform the players of the play switch
-                System.out.println(GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + " has reversed the order of playing! \nIt is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn + 1).strPlayerName + "'s turn.");
+                System.out.println(GameManager.getCurrentPlayer().getName() + " has reversed the order of playing!");
                 break;
             case CHR_SKIP:
                 
@@ -41,26 +34,18 @@ public class SpecialCard extends Card
                 GameManager.nextTurn();
                 
                 // Inform the players about the card skip
-                System.out.println(GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn has been skipped!");
+                System.out.println(GameManager.getCurrentPlayer().getName() + "'s turn has been skipped!");
                 break;
             case CHR_PICK_TWO:
                 
-                System.out.println("It is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn.");
+                GameManager.nextTurn();
                 
                 // Add two cards to the players deck
-                for(int i = 0; i < 2; i++){
-                    
-                    // Take a Card from the deck and store it
-                    Card c = Deck.drawCard();
-                    
+                for(int i = 0; i < 2; i++)
+                {
                     // Get the current player(whose turn it is) and add a card from the deck
-                    GameManager.arlPlayers.get(bytPlayerTurn).arlHand.add(c);
-                    
-                    // Print out the card drawn
-                    System.out.println("\t" + c.cardColour());
+                    GameManager.getCurrentPlayer().drawCard();
                 }
-                
-                System.out.println("The colour is now: " + Deck.getCurrentCard().cardColour());
                 break;
             case CHR_PICK_FOUR:
                 
@@ -69,19 +54,13 @@ public class SpecialCard extends Card
                 
                 // Run the nextTurn method in GameManager, and inform the players
                 GameManager.nextTurn();
-                System.out.println("It is now " + GameManager.arlPlayers.get(GameManager.bytPlayerTurn).strPlayerName + "'s turn. \n4 cards have been added to their deck! The cards are: ");
+                System.out.println(GameManager.getCurrentPlayer().getName() + "'s turn has been skipped. \n4 cards have been added to their deck!");
                 
                 // Add four cards to the players deck
-                for(int i = 0; i < 4; i++){
-                    
-                    // Take a Card from the deck and store it
-                    Card c = Deck.drawCard();
-                    
+                for(int i = 0; i < 4; i++)
+                {
                     // Get the current player(whose turn it is) and add a card from the deck
-                    GameManager.arlPlayers.get(bytPlayerTurn).arlHand.add(c);
-                    
-                    // Print out the card drawn
-                    System.out.println("\t" + c.cardColour());
+                    GameManager.getCurrentPlayer().drawCard();
                 }
                 
                 System.out.println("The colour is now: " + Deck.getCurrentCard().cardColour());

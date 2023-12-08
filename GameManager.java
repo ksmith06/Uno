@@ -19,6 +19,7 @@ public class GameManager
     {
         byte bytPlayerCount;
         
+        Deck.populateDeck();
         
         System.out.println("Welcome to UNO!");
         
@@ -31,30 +32,31 @@ public class GameManager
             arrPlayers[i] = new Player();
         }
         
-        incrementTurn();
-        
         do
         {
             byte bytInput;
             
+            nextTurn();
+            
+            System.out.println("The last card played was " + Deck.getCurrentCard() + ".");
             System.out.println("Pass the computer to " + currentPlayer.getName() + "! Hit enter when only they can see the screen.");
             
             Input.awaitInput();
             
             boolean bolHasPlayedCard = false;
             do
-            {
+            {   
                 bytInput = Input.getInput(currentPlayer.getHand());
                 
-                if (bytInput == currentPlayer.getHand().size())
+                if (bytInput - 1 == currentPlayer.getHand().size())
                 {
                     currentPlayer.drawCard();
                 }
                 else
                 {   
-                    if (currentPlayer.getHand().get(bytInput).isCompatible(Deck.getCurrentCard()))
+                    if (currentPlayer.getHand().get(bytInput - 1).isCompatible(Deck.getCurrentCard()))
                     {
-                        currentPlayer.playCard(bytInput);
+                        currentPlayer.playCard((byte) (bytInput - 1));
                         bolHasPlayedCard = true;
                     }
                     else
@@ -63,9 +65,16 @@ public class GameManager
                     }
                 }
             }
-            while (bolHasPlayedCard);
+            while (!bolHasPlayedCard);
             
-            incrementTurn();
+            System.out.println("Hit enter to end your turn.");
+            
+            Input.awaitInput();
+            
+            for (int i = 0; i < 50; i++)
+            {
+                System.out.println();
+            }
         }
         while (!currentPlayer.isHandEmpty());
         
@@ -77,11 +86,16 @@ public class GameManager
         bolIsReversed = !bolIsReversed;
     }
     
-    public static void incrementTurn()
+    public static Player getCurrentPlayer()
+    {
+        return currentPlayer;
+    }
+    
+    public static void nextTurn()
     {
         if (!bolIsReversed)
         {
-            if (bytTurn == arrPlayers.length)
+            if (bytTurn == arrPlayers.length - 1)
             {
                 bytTurn = 0;
             }

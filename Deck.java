@@ -40,10 +40,18 @@ public class Deck
         Random rand = new Random();
         
         //declare and populate variable of type int with a number from 0-arlDeck size, minus 1
-        int intRandNum = rand.nextInt(arlDeck.size() - 1);
+        int intRandNum = rand.nextInt(arlDeck.size());
+        
+        Card drawnCard = arlDeck.remove(intRandNum);
+        
+        if (arlDeck.size() == 0)
+        {
+            arlDeck = arlDiscardPile;
+            arlDiscardPile.clear();
+        }
         
         //return and remove the card
-        return arlDeck.remove(intRandNum);
+        return drawnCard;
     }
 
     /**
@@ -113,8 +121,14 @@ public class Deck
                     for (int i = 0; i < bytNum; i++)
                     {
                         //add the card type to arlDeck
-                        arlDeck.add(new Card(chrColour, chrType));
-                        
+                        if (Character.isDigit(chrType))
+                        {
+                            arlDeck.add(new Card(chrColour, chrType));
+                        }
+                        else
+                        {
+                            arlDeck.add(new SpecialCard(chrColour, chrType));
+                        }
                     }        
                 }        
             }
@@ -122,6 +136,8 @@ public class Deck
             
             //close the filereader
             in.close();
+            
+            addToDiscardPile(drawCard());
         }
         catch (FileNotFoundException e) 
         {
@@ -134,7 +150,7 @@ public class Deck
         catch (IOException e) 
         {
             System.out.println("Error: Cannot read from file");
-        }   
+        } 
     }
     
     /**
